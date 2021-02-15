@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import { Grid } from '@material-ui/core';
 import './App.css';
 import Content from './components/content';
+import Searchbar from './components/searchbar';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Grid item xs={1} sm={2}/>
         <Grid item xs={10} sm={8}>
           {/* //content ek enda one methenta */}
+          <Searchbar/>
           <h1>Hello to the world</h1>
           <Content/>
         </Grid>
