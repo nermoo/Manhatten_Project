@@ -2,21 +2,26 @@ import React from 'react';
 import  { useState,useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-const Content=(city,api)=>{
+const Content=(api)=>{
 
   const [cities, setItems] = useState([]);
-  console.log(city);
+  console.log(api);
+  
+
+  // useEffect(()=>{
+  //   cities=[];
+  // })
 
   
-  useEffect(() => {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
+  useEffect((api) => {
+    fetch(`${api}`)
       .then(res => res.json())
       .then(
         (result) => {
           setItems(cities => cities.concat(result));
         },
       )
-  },[]);
+  });
 
   console.log(cities);
 

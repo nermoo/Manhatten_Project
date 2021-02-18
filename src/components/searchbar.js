@@ -8,19 +8,25 @@ import Content from './content';
 const SearchBar=()=>{
 
   const [city,setcity]=useState("");
-  const [api,setapi]=useState(`http://api.openweathermap.org/data/2.5/forecast?q=Kurunegala,LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
-  console.log(city);
+  const [api,setapi]=useState(``);
+  
+ 
 
-  Content(city);
+    const apiFtecher = e => {
+      const city =(e.target.value);
+      console.log(city);
+      return (
+       setapi(`http://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
+       );
+     }
 
-  const apiFtecher=()=>{
-    return (
-      setapi(`http://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
-    );
-  }
-
+     Content(api);
   
 
+  
+//try to get the geo location and show weather forcast of the current location. that will be easy.
+//first we have to get the coordinates of the current location to the application
+//and then make the api call 
 
 
 
@@ -38,8 +44,8 @@ const SearchBar=()=>{
             margin="normal"
             variant="outlined"
             InputProps={{ ...params.InputProps, type: 'search' }}
-            onChange={e=>setcity(e.target.value)}
-            onBlur={e=>setcity(e.target.value)}
+            // onChange={apiFtecher}
+            onBlur={apiFtecher}
           />
         )}
       />
