@@ -5,7 +5,9 @@ import ReactDOM from 'react-dom';
 const Content=(api)=>{
 
   const [cities, setItems] = useState([]);
-  console.log(api);
+
+  const API=api;
+  console.log(API);
   
 
   // useEffect(()=>{
@@ -13,17 +15,18 @@ const Content=(api)=>{
   // })
 
   
-  useEffect((api) => {
-    fetch(`${api}`)
-      .then(res => res.json())
+  useEffect(() => {
+    fetch(API)
+      .then(res => res.json(console.log(res)))
       .then(
         (result) => {
           setItems(cities => cities.concat(result));
         },
       )
-  });
+  },[API]);
 
-  console.log(cities);
+  console.log(cities)
+  // api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid={API key}
 
     return (
       // <ul>
