@@ -8,37 +8,36 @@ const Content=(api)=>{
 
   const API=api;
   console.log(API);
-  
-
-  // useEffect(()=>{
-  //   cities=[];
-  // })
 
   
   useEffect(() => {
+  //  setItems([]);  //clearing cities array.deleting previuos data from the array
     fetch(API)
       .then(res => res.json(console.log(res)))
       .then(
         (result) => {
+          console.log(cities)
           setItems(cities => cities.concat(result));
+          
         },
       )
   },[API]);
 
   console.log(cities)
-  // api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid={API key}
 
     return (
-      // <ul>
-      //   {cities.map(citi => (
-      //     <li key={citi.city.id}>
-      //       {citi.city.id} {citi.city.name}
-      //       The wind speed is{citi.list[0].main.temp}
-      //     </li>
-      //   ))}
-      // </ul>
-      <h2>hello</h2>
-    );
+        <ul>
+        {cities.map(citi => (
+          <li key={citi.city.id}>
+            The city is is{citi.city.id} 
+            The city name is{citi.city.name}
+            The temparature is {citi.list[0].main.temp}
+          </li>
+        ))}
+      </ul>
+  
+      
+    )
   }
 
 
