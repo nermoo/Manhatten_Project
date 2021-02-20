@@ -2,31 +2,35 @@ import React from 'react';
 import  { useState,useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
-const Content=(api)=>{
+const Content=(props)=>{
 
   const [cities, setItems] = useState([]);
 
-  const API=api;
-  console.log(API);
+  // const API=api;
+  const appi=props.api;
+  console.log(props.api);
+  console.log(cities)
 
   
   useEffect(() => {
-  //  setItems([]);  //clearing cities array.deleting previuos data from the array
-    fetch(API)
-      .then(res => res.json(console.log(res)))
-      .then(
-        (result) => {
-          console.log(cities)
-          setItems(cities => cities.concat(result));
-          
-        },
-      )
-  },[API]);
+    if (appi) {
+      (async () => {
+        try {
+          const response = await fetch(appi);
+          const result = await response.json();
+          const updatedCities = cities.concat(result);
+          setItems(updatedCities);
+        } catch(err) {
+          console.error(err);
+        }
+      })();
+    }
+  }, [appi]);
 
-  console.log(cities)
 
     return (
         <ul>
+          <h4>hello</h4>
         {cities.map(citi => (
           <li key={citi.city.id}>
             The city is is{citi.city.id} 

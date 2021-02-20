@@ -15,8 +15,6 @@ function App() {
           {/* //content ek enda one methenta */}
           <Searchbar/>
           <h1>Hello to the world</h1>
-          {/* <Navbar/> */}
-          <Content/>
         </Grid>
         <Grid item xs={1} sm={2}/>
       </Grid>

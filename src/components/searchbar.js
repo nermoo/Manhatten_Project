@@ -8,7 +8,7 @@ import Content from './content';
 const SearchBar=()=>{
 
   const [city,setcity]=useState("");
-  const [api,setapi]=useState(``);
+  const [apii,setapi]=useState(``);
   
  
 
@@ -20,15 +20,7 @@ const SearchBar=()=>{
        );
      }
 
-     Content(api);
-  
-
-  
-//try to get the geo location and show weather forcast of the current location. that will be easy.
-//first we have to get the coordinates of the current location to the application
-//and then make the api call 
-
-
+  console.log(apii);
 
     return (
         <div style={{ width: 300 }}>
@@ -49,6 +41,7 @@ const SearchBar=()=>{
           />
         )}
       />
+      <Content api={apii}/>
     </div>
     );
 
