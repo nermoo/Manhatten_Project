@@ -7,8 +7,9 @@ import Content from './content';
 
 const SearchBar=()=>{
 
-  const [city,setcity]=useState("");
+  const [city,setcity]=useState("Kurunegala");
   const [apii,setapi]=useState(``);
+  const [index,setindex]=useState(0);
   
  
 
@@ -41,7 +42,7 @@ const SearchBar=()=>{
           />
         )}
       />
-      <Content api={apii}/>
+        <Content api={apii}/>
     </div>
     );
 
