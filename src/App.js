@@ -14,7 +14,6 @@ function App() {
         <Grid item xs={10} sm={8}>
           {/* //content ek enda one methenta */}
           <Searchbar/>
-          <h1>Hello to the world</h1>
         </Grid>
         <Grid item xs={1} sm={2}/>
       </Grid>
