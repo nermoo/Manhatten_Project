@@ -1,6 +1,7 @@
 import React from 'react';
 import  { useState,useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import Mapper from "./mapper"
 
 const Content=(props)=>{
 
@@ -20,8 +21,7 @@ const Content=(props)=>{
           result = await response.json();
           cities.shift();                               //clearing the cities array before insert new items
           const updatedCities =cities.concat(result)
-          setItems(updatedCities);
-          cities.map(weatherDataMapper);
+          setItems(updatedCities)
         } catch(err) {
           console.error(err);
         }
@@ -32,6 +32,7 @@ const Content=(props)=>{
 
     return (
         <ul>
+          {/* <li>name is {cities.city.city}</li> */}
         {cities.map(citi => (
           <li key={citi.city.id}>  
             The city id is  {citi.city.id}   
@@ -39,6 +40,9 @@ const Content=(props)=>{
             The temparature is {(citi.list[0].main.temp-273.15).toFixed(2)}
           </li>
         ))}
+        <Mapper
+          cities={cities}
+          />
       </ul>
   
       
@@ -49,22 +53,3 @@ const Content=(props)=>{
 export default Content;
 
 
-function weatherDataMapper(data){
-
-  const general={
-    city:data.city.name,
-    country:data.city.country,
-    temperature:Math.round(data.list[0].main.temp),
-    description:data.list[0].weather[0].description,
-    humidity:data.list[0].main.humidity,
-    icon:data.list[0].weather[0].icon,
-    windSpeed:Math.round(data.list[0].wind.speed*3.6),
-    feelsLike:Math.round(data.list[0].main.feels_like),
-
-
-    
-  }
-
-
-  return general;
-}
