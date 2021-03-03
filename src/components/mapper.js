@@ -6,47 +6,38 @@ import { useEffect,useState } from 'react';
 
 const Mapper=(props)=>{
 
-    const currentCity=props.cities;
-    const [mappedObj,setmappedObj]=useState({ });
+    const name =props.city
 
     useEffect(()=>{
-        const mapped=currentCity.map(weatherDataMapper);
-        setmappedObj(mapped[0]);
-        // console.log(mapped);
-        console.log(mappedObj.city);
-        console.log("ok");
+        
+    
 
     },[])
 
 
-    return (
-        <ul>
-            <li>yo wassup</li>
-            <li>{mappedObj.city}</li>
-        </ul>
-    );
-
+    // if(Object.keys(mappedObj)===undefined){
+    //     return (
+    //         <h2>hello bois this means the object is not empty</h2>
+    //     )
+    // }
+    // else{
+    //     return (
+    //         <h2>yo im empty</h2>
+    //     )
+    // }
+    return(
+        <div>
+            <h1>hello</h1>
+            <h1>{name}</h1>
+              //content eke map krla, map krna gamanma mapper eka call kranda hadamu
+               ethkota array eke thynne eka object ekk nisa map eka run wenne eka parai.object ekk eliyata ganne 
+               nathi nisa wadi aulk yna ekk na.mkda array ek kohomath thynwane. ethkota ara mapper eke thyna function eka mekata(content) gnda one
+               eke mapper call krnkota wena wenama props call krnam mekata props widihata aragena nikamna return eke call krnda puluwan
+        </div>
+        
+    )
 }
 
 
 export default Mapper;
 
-function weatherDataMapper(data){
-
-    const general={
-      city:data.city.name,
-      country:data.city.country,
-      temperature:Math.round(data.list[0].main.temp),
-      description:data.list[0].weather[0].description,
-      humidity:data.list[0].main.humidity,
-      icon:data.list[0].weather[0].icon,
-      windSpeed:Math.round(data.list[0].wind.speed*3.6),
-      feelsLike:Math.round(data.list[0].main.feels_like),
-  
-  
-      
-    }
-  
-  
-    return general;
-  }
