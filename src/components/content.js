@@ -52,6 +52,13 @@ const Content=(props)=>{
       mapped.map((weather)=>
         <Mapper
           city={weather.city}
+          country={weather.country}
+          temperature={weather.temperature}
+          description={weather.description}
+          humidity={weather.humidity}
+          icon={weather.icon}
+          wind_speed={weather.windSpeed}
+          feelsLike={weather.feelsLike}
         />
       )
     )

@@ -1,39 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { useEffect,useState } from 'react';
+import { TextField,
+        Card,
+        Button,
+        Typography,
+        CardActions,
+        CardContent,} from '@material-ui/core';
+import { makeStyles} from '@material-ui/core/styles';
 
+
+const useStyles=makeStyles({
+    card:{
+        margin:10,
+        width:"max-content"
+    }
+})
 
 
 const Mapper=(props)=>{
-
-    const name =props.city
-
-    useEffect(()=>{
-        
-    
-
-    },[])
+    const classes=useStyles();
 
 
-    // if(Object.keys(mappedObj)===undefined){
-    //     return (
-    //         <h2>hello bois this means the object is not empty</h2>
-    //     )
-    // }
-    // else{
-    //     return (
-    //         <h2>yo im empty</h2>
-    //     )
-    // }
     return(
-        <div>
-            <h1>hello</h1>
-            <h1>{name}</h1>
-              //content eke map krla, map krna gamanma mapper eka call kranda hadamu
-               ethkota array eke thynne eka object ekk nisa map eka run wenne eka parai.object ekk eliyata ganne 
-               nathi nisa wadi aulk yna ekk na.mkda array ek kohomath thynwane. ethkota ara mapper eke thyna function eka mekata(content) gnda one
-               eke mapper call krnkota wena wenama props call krnam mekata props widihata aragena nikamna return eke call krnda puluwan
-        </div>
+        <Card className={classes.card}>
+            <CardContent>
+                <Typography variant="h2">
+                    {props.city},{props.country}
+                </Typography>
+                <Typography variant="h5" component="h2">
+                    The temperature is {props.temperature}
+                </Typography>
+
+            </CardContent>
+        </Card>
+        
         
     )
 }
