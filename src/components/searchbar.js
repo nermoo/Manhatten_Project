@@ -4,9 +4,27 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import Content from './content';
 import SearchIcon from '@material-ui/icons/Search';
+import { Grid,IconButton,Input } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
+
+const useStyles=makeStyles({
+
+  searchbar:{
+    alignContent:"center",
+  },
+  seIcon:{
+    
+    position:"relative",
+    padding:10,
+    top:22
+
+  }
+});
 
 const SearchBar=()=>{
+
+  const classes=useStyles();
 
   const [city,setcity]=useState("Kurunegala");
   const [apii,setapi]=useState(``);
@@ -25,33 +43,52 @@ const SearchBar=()=>{
   },[city])
 
     return (
-        <div style={{ width: 300 }}>
+      <Grid container>
+      <Grid item container xs={12}>
+      <Grid className={classes.searchbar} item xs={12}>
+        <Grid container direction="column">
+          <Grid item container>
+            <Grid item xs={2}/>
+          <Grid item xs={8} sm={8}>
       <Autocomplete
         id="free-solo-2-demo"
         disableClearable
         options={Cities.map((option) => option.name)} 
         renderInput={(params) => (
           <div
-          display="flex"
-          position="relative"
           >
-          <TextField
+          <Input
             id="standard-basic" 
             {...params}
             label="city"
             margin="normal"
             InputProps={{ ...params.InputProps, type: 'search' }}
             // onChange={apiFtecher}
-            onBlur={apiFtecher}
+            // onBlur={apiFtecher}
           />
-          <SearchIcon/>
-      </div>
           
+      </div>
         )}
       />
-      
-        <Content api={apii}/>
-    </div>
+      </Grid>
+      <Grid className={classes.seIcon} item xs={1}>
+        <div onClick={apiFtecher}>
+            <IconButton>
+                <SearchIcon/>
+            </IconButton>
+        </div>
+      </Grid>
+      <Grid item xs={1}/>
+      </Grid>
+      </Grid>
+      </Grid>
+      <Grid item xs={12}>
+      <Content api={apii}/>
+      </Grid>
+        
+    
+    </Grid>
+    </Grid>
     );
 
 }

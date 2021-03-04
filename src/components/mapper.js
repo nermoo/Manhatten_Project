@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useEffect,useState } from 'react';
 import { TextField,
         Card,
         Button,
         Typography,
         CardActions,
-        CardContent,} from '@material-ui/core';
+        CardContent,
+        Grid} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles=makeStyles({
     card:{
-        margin:10,
-        width:"max-content"
+        margin:10
     }
 })
 
@@ -23,6 +22,8 @@ const Mapper=(props)=>{
 
 
     return(
+        <Grid item container>
+            <Grid item xs={12}>
         <Card className={classes.card}>
             <CardContent>
                 <Typography variant="h2">
@@ -34,6 +35,8 @@ const Mapper=(props)=>{
 
             </CardContent>
         </Card>
+        </Grid>
+        </Grid>
         
         
     )
