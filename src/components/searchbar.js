@@ -18,7 +18,9 @@ const useStyles=makeStyles({
     position:"relative",
     padding:10,
     top:22
-
+  },
+  card:{
+    backgroundColor:"red",
   }
 });
 
@@ -43,7 +45,7 @@ const SearchBar=()=>{
   },[city])
 
     return (
-      <Grid container>
+      <Grid container >
       <Grid item container xs={12}>
       <Grid className={classes.searchbar} item xs={12}>
         <Grid container direction="column">
@@ -57,14 +59,14 @@ const SearchBar=()=>{
         renderInput={(params) => (
           <div
           >
-          <Input
+          <TextField
             id="standard-basic" 
             {...params}
             label="city"
             margin="normal"
             InputProps={{ ...params.InputProps, type: 'search' }}
             // onChange={apiFtecher}
-            // onBlur={apiFtecher}
+            onBlur={apiFtecher}
           />
           
       </div>
@@ -82,7 +84,7 @@ const SearchBar=()=>{
       </Grid>
       </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} >
       <Content api={apii}/>
       </Grid>
         
