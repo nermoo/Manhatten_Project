@@ -1,2 +1,2 @@
 # Manhatten_Project
-React weather app
+A React weather app
