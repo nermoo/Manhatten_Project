@@ -30,19 +30,25 @@ const SearchBar=()=>{
 
   const [city,setcity]=useState("Kurunegala");
   const [apii,setapi]=useState(``);
+  const [town,settown]=useState("")
   
  
 
     const apiFtecher = e => {
-      setcity(e.target.value);
-      console.log(city);
+      settown(e.target.value);
      }
 
-  console.log(apii);
+     function APIsetter(){
+       return(
+         setcity(town)
+       )
+     }
+
 
   useEffect(()=>{
     setapi(`http://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
   },[city])
+
 
     return (
       <Grid container >
@@ -74,7 +80,7 @@ const SearchBar=()=>{
       />
       </Grid>
       <Grid className={classes.seIcon} item xs={1}>
-        <div onClick={apiFtecher}>
+        <div onClick={APIsetter}>
             <IconButton>
                 <SearchIcon/>
             </IconButton>
