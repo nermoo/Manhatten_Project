@@ -6,8 +6,11 @@ import { TextField,
         Typography,
         CardActions,
         CardContent,
-        Grid} from '@material-ui/core';
+        Grid,
+        CardMedia,
+        CardActionArea} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
+import { WiDaySunny } from "weather-icons-react";
 
 
 const useStyles=makeStyles({
@@ -15,6 +18,10 @@ const useStyles=makeStyles({
         margin:10,
         backgroundColor:"#f59042",
 
+    },
+    media:{
+        height:150,
+        width:150
     }
 })
 
@@ -24,7 +31,14 @@ const Mapper=(props)=>{
     var TD="";
     const today=new Date();
     const date=today.getDate();
-    const time=today.getHours() + ":" + today.getMinutes()
+    const hours=today.getHours();
+    const minutes=today.getMinutes();
+    var time=""
+    if(minutes<10){
+        time=hours + ":"+0 + minutes;
+    }else{
+        time=hours+":"+minutes;
+    }
     const day=week[date-1];
     if(today.getHours()<12){
         TD="AM"
@@ -48,8 +62,11 @@ const Mapper=(props)=>{
                 </Typography>
                 <Typography variant="h5" component="h2">
                     The temperature is {Math.round(props.temperature-273.15)}
-                    //time eke ara 10 adu ewage issarahata 0 ena widihata hadanna one icons ara thynwa widihatama url ekn ganna one. stack overflow eke qustion eka thybba
+                    // icons ara thynwa widihatama url ekn ganna one. stack overflow eke qustion eka thybba
                 </Typography>
+        
+                <WiDaySunny size={300} color='#000' />
+                
 
             </CardContent>
         </Card>

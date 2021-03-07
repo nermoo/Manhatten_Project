@@ -30,7 +30,7 @@ const SearchBar=()=>{
 
   const [city,setcity]=useState("Kurunegala");
   const [apii,setapi]=useState(``);
-  const [town,settown]=useState("")
+  const [town,settown]=useState("");
   
  
 
@@ -42,7 +42,7 @@ const SearchBar=()=>{
        return(
          setcity(town)
        )
-     }
+     } 
 
 
   useEffect(()=>{
