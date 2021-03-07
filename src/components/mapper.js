@@ -10,7 +10,8 @@ import { TextField,
         CardMedia,
         CardActionArea} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
-import { WiDaySunny } from "weather-icons-react";
+import Recommendations from './recommendations';
+
 
 
 const useStyles=makeStyles({
@@ -22,6 +23,21 @@ const useStyles=makeStyles({
     media:{
         height:150,
         width:150
+    },
+    temp:{
+        display:"flex",
+        textAlign:"center",
+        alignItems:"center",
+    },
+    icon:{
+        alignContent:"center",
+        textAlign:"center",
+    },
+    desc:{
+        fontFamily:"Raleway"
+    },
+    description:{
+        textAlign:"center",
     }
 })
 
@@ -33,7 +49,18 @@ const Mapper=(props)=>{
     const date=today.getDate();
     const hours=today.getHours();
     const minutes=today.getMinutes();
-    var time=""
+    const code=props.code;
+    var recommendation='';
+    if(6<hours<18){
+        
+        recommendation=Recommendations.map((reco)=>reco.day[code].recommendation);
+    }else{
+
+        recommendation=Recommendations.map((reco)=>reco.night[code].recommendation)
+    };
+
+    console.log(recommendation);
+    var time="";
     if(minutes<10){
         time=hours + ":"+0 + minutes;
     }else{
@@ -45,8 +72,11 @@ const Mapper=(props)=>{
     }else{
         TD="PM"
     }
-
     const classes=useStyles();
+    console.log(props.code);
+    
+    
+    console.log(recommendation);
 
 
     return(
@@ -60,14 +90,39 @@ const Mapper=(props)=>{
                 <Typography variant="h6" component="h2">
                     {day}, {time} {TD}
                 </Typography>
-                <Typography variant="h5" component="h2">
-                    The temperature is {Math.round(props.temperature-273.15)}
-                    // icons ara thynwa widihatama url ekn ganna one. stack overflow eke qustion eka thybba
-                </Typography>
-        
-                <WiDaySunny size={300} color='#000' />
+                
+                <Grid constainer direction="column">
+                    <Grid item container xs={12}>
+                        <Grid calssName={classes.temp} item xs={12} sm={6}>
+                            <Typography className={classes.tempe} variant="h1" component="h1">
+                                     {Math.round(props.temperature-273.15)}
+                            </Typography>
+                        </Grid>
+                        <Grid className={classes.icon} item xs={12} sm={6}>
+                            <CardMedia>
+                            <img
+                                className={classes.image}
+                                src={`http://openweathermap.org/img/wn/${props.icon}@2x.png`}
+                                width="175px"
+                                height="175px"
+                            />
+                            </CardMedia>
+                        </Grid>
+
+                    </Grid>
+                    <Grid item container xs={12} className={classes.description}>
+                        <Grid item xs={12}>
+                            <Typography className={classes.desc} variant="h3" component="h3">
+                                {recommendation}
+                            </Typography>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
                 
 
+            
             </CardContent>
         </Card>
         </Grid>
@@ -79,4 +134,3 @@ const Mapper=(props)=>{
 
 
 export default Mapper;
-

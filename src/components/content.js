@@ -59,6 +59,7 @@ const Content=(props)=>{
           icon={weather.icon}
           wind_speed={weather.windSpeed}
           feelsLike={weather.feelsLike}
+          code={weather.code}
         />
       )
     )
@@ -82,6 +83,7 @@ function weatherDataMapper(data){
     icon:data.list[0].weather[0].icon,
     windSpeed:Math.round(data.list[0].wind.speed*3.6),
     feelsLike:Math.round(data.list[0].main.feels_like),
+    code:data.list[0].weather[0].id,
 
 
     
