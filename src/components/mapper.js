@@ -11,7 +11,7 @@ import { TextField,
         CardActionArea} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
 import Recommendations from './recommendations';
-
+import { WiCelsius } from "weather-icons-react";
 
 
 const useStyles=makeStyles({
@@ -25,9 +25,14 @@ const useStyles=makeStyles({
         width:150
     },
     temp:{
-        display:"flex",
-        textAlign:"center",
+        display:"grid",
+        textAlign:"right",
         alignItems:"center",
+        float:"right"
+    },
+    tempe:{
+        textAlign:"center",
+        float:"right",
     },
     icon:{
         alignContent:"center",
@@ -40,6 +45,9 @@ const useStyles=makeStyles({
     },
     description:{
         textAlign:"center",
+    },
+    cel:{
+        float:"left",
     }
 })
 
@@ -57,9 +65,11 @@ const Mapper=(props)=>{
     if(6<hours && hours<18){
         
         recommendation=Recommendations.map((reco)=>reco.day[code].recommendation);
+        
     }else{
 
-        recommendation=Recommendations.map((reco)=>reco.night[code].recommendation)
+        recommendation=Recommendations.map((reco)=>reco.night[code].recommendation);
+        
     };
 
     console.log(recommendation);
@@ -84,10 +94,11 @@ const Mapper=(props)=>{
 
 
     return(
+        <Grid container direction="column">
         <Grid item container>
             <Grid item xs={12}>
         <Card className={classes.card}>
-            <CardContent>
+            <CardContent xs={8} sm={12}>
                 <Typography variant="h2">
                     {props.city},{props.country}
                 </Typography>
@@ -97,9 +108,9 @@ const Mapper=(props)=>{
                 
                 <Grid constainer direction="column">
                     <Grid item container xs={12}>
-                        <Grid calssName={classes.temp} item xs={12} sm={6}>
+                        <Grid className={classes.temp} item xs={10} sm={6}>
                             <Typography className={classes.tempe} variant="h1" component="h1">
-                                     {Math.round(props.temperature-273.15)}
+                                     {Math.round(props.temperature-273.15)} &deg;C
                             </Typography>
                         </Grid>
                         <Grid className={classes.icon} item xs={12} sm={6}>
@@ -129,6 +140,7 @@ const Mapper=(props)=>{
             
             </CardContent>
         </Card>
+        </Grid>
         </Grid>
         </Grid>
         

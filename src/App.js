@@ -8,11 +8,11 @@ import Navbar from './components/navbar';
 function App() {
   return (
     <Grid container direction='column'>
+      <Navbar/>
       {/* methna thwa ekk dala navbar ek dann one  */}
       <Grid item container>
         <Grid item xs={1} sm={2}/>
         <Grid item xs={10} sm={8}>
-          {/* //content ek enda one methenta */}
           <Searchbar/>
         </Grid>
         <Grid item xs={1} sm={2}/>

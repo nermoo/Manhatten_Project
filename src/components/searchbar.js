@@ -51,6 +51,7 @@ const SearchBar=()=>{
 
 
     return (
+      <div>
       <Grid container >
       <Grid item container xs={12}>
       <Grid className={classes.searchbar} item xs={12}>
@@ -68,7 +69,7 @@ const SearchBar=()=>{
           <TextField
             id="standard-basic" 
             {...params}
-            label="city"
+            label="Enter your city"
             margin="normal"
             InputProps={{ ...params.InputProps, type: 'search' }}
             // onChange={apiFtecher}
@@ -97,6 +98,7 @@ const SearchBar=()=>{
     
     </Grid>
     </Grid>
+    </div>
     );
 
 }

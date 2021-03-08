@@ -1,59 +1,60 @@
-// import React, { Component } from "react";
-// import Content from './content';
+import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormGroup from '@material-ui/core/FormGroup';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import Searchbar from './searchbar';
 
-// var options = {
-//   enableHighAccuracy: true,
-//   timeout: 5000,
-//   maximumAge: 0,
-// };
-// function success(pos) {
-//   var crd = pos.coords;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    position:"sticky",
+    backgroundColor:"#ffffff",
+    color:"black"
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+  switch:{
+      float:"right",
+      
+  },
+  brand:{
+      flexGrow:1,
+  }
+}));
 
-//   console.log("Your current position is:");
-//   console.log(`Latitude : ${crd.latitude}`);
-//   console.log(`Longitude: ${crd.longitude}`);
-//   console.log(`More or less ${crd.accuracy} meters.`);
-//   console.log(pos.coords.latitude);
-//     Content(pos.coords.latitude,pos.coords.longitude)
-  
-  
-// }
+export default function MenuAppBar() {
+    const classes=useStyles();
 
-// function errors(err) {
-//   console.warn(`ERROR(${err.code}): ${err.message}`);
-// }
+    return(
+        <div>
 
-// export default class GeoLocation extends Component {
-//   componentDidMount() {
-//     if (navigator.geolocation) {
-//       navigator.permissions
-//         .query({ name: "geolocation" })
-//         .then(function (result) {
-//           if (result.state === "granted") {
-//             console.log(result.state);
-//             console.log(result);
-//             //If granted then you can directly call your function here
-//             navigator.geolocation.getCurrentPosition(success);
-//           } else if (result.state === "prompt") {
-//             navigator.geolocation.getCurrentPosition(success, errors, options);
-//           } else if (result.state === "denied") {
-//             //If denied then you have to show instructions to enable location
-//           }
-//           result.onchange = function () {
-//             console.log(result.state);
-//           };
-//         });
-//     } else {
-//       alert("Sorry Not available!");
-//     }
-//   };
-  
+            <AppBar className={classes.root}>
+                <Toolbar>
+                    <Typography 
+                    className={classes.brand}>Nermo's weather App
+                    </Typography>
+                    <FormControlLabel 
+                    className={classes.switch}
+                    control={<Switch  name="checkedA" />}
+                    label="&deg;C/&deg;F"
+                    />
+                </Toolbar>
+                
+            </AppBar>
 
-//   render() {
-//     return (
-//       <div>
-//         <h2>GeoLocation</h2>
-//       </div>
-//     );
-//   }
-// }
+        </div>
+    )
+}
