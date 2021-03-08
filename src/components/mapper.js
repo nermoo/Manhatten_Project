@@ -34,7 +34,9 @@ const useStyles=makeStyles({
         textAlign:"center",
     },
     desc:{
-        fontFamily:"Raleway"
+        fontFamily:"monospace",
+        fontStyle:"italic",
+        fontWeight:"bold",
     },
     description:{
         textAlign:"center",
@@ -49,9 +51,10 @@ const Mapper=(props)=>{
     const date=today.getDate();
     const hours=today.getHours();
     const minutes=today.getMinutes();
+    const dey=week[today.getDay()-1];
     const code=props.code;
     var recommendation='';
-    if(6<hours<18){
+    if(6<hours && hours<18){
         
         recommendation=Recommendations.map((reco)=>reco.day[code].recommendation);
     }else{
@@ -61,12 +64,13 @@ const Mapper=(props)=>{
 
     console.log(recommendation);
     var time="";
+
     if(minutes<10){
         time=hours + ":"+0 + minutes;
     }else{
         time=hours+":"+minutes;
     }
-    const day=week[date-1];
+
     if(today.getHours()<12){
         TD="AM"
     }else{
@@ -88,7 +92,7 @@ const Mapper=(props)=>{
                     {props.city},{props.country}
                 </Typography>
                 <Typography variant="h6" component="h2">
-                    {day}, {time} {TD}
+                    {dey}, {time} {TD}
                 </Typography>
                 
                 <Grid constainer direction="column">
@@ -112,8 +116,8 @@ const Mapper=(props)=>{
                     </Grid>
                     <Grid item container xs={12} className={classes.description}>
                         <Grid item xs={12}>
-                            <Typography className={classes.desc} variant="h3" component="h3">
-                                {recommendation}
+                            <Typography className={classes.desc} variant="h4" component="h3">
+                                "{recommendation}"
                             </Typography>
                         </Grid>
 
