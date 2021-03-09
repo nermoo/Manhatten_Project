@@ -13,12 +13,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Searchbar from './searchbar';
 import { WiSunrise } from "weather-icons-react";
+import { useState} from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     position:"sticky",
-    backgroundColor:"#ffffff",
+    backgroundColor:"#f59042",
     color:"black"
   },
   menuButton: {
@@ -27,17 +28,30 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  switch:{
+  Switch:{
       float:"right",
+      '$$checked':{
+        color:"black",
+        boxColor:"black"
+      },
+      '&$checked + $track': {
+        backgroundColor: "black"[500],
+      },
       
   },
   brand:{
       flexGrow:1,
+      fontSize:23
   }
 }));
 
 export default function MenuAppBar() {
     const classes=useStyles();
+    const [temp,setTemp]=useState(false)
+
+    const tempHandler=()=>{
+      setTemp((prev)=>!(prev))
+    }
 
     return(
         <div>
@@ -45,12 +59,12 @@ export default function MenuAppBar() {
             <AppBar className={classes.root}>
                 <Toolbar>
                     <Typography 
-                    className={classes.brand}>Nermo's weather
+                    className={classes.brand}>weather SL
                     <WiSunrise size={24} color='#000' />
                     </Typography>
                     <FormControlLabel 
                     className={classes.switch}
-                    control={<Switch  name="checkedA" />}
+                    control={<Switch checked={temp} onChange={tempHandler} />}
                     label="&deg;C/&deg;F"
                     />
                 </Toolbar>
