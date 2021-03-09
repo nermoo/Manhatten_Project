@@ -11,7 +11,7 @@ import { TextField,
         CardActionArea} from '@material-ui/core';
 import { makeStyles} from '@material-ui/core/styles';
 import Recommendations from './recommendations';
-import { WiCelsius } from "weather-icons-react";
+import { WiHumidity,WiStrongWind } from "weather-icons-react";
 
 
 const useStyles=makeStyles({
@@ -45,9 +45,13 @@ const useStyles=makeStyles({
     },
     description:{
         textAlign:"center",
+        marginTop:10
     },
     cel:{
         float:"left",
+    },
+    humidity:{
+        verticalAlign:"bottom",
     }
 })
 
@@ -124,6 +128,20 @@ const Mapper=(props)=>{
                             </CardMedia>
                         </Grid>
 
+                    </Grid>
+                    <Grid item container xs={12} className={classes.meta}>
+                        <Grid item xs={12}>
+                            <Typography>
+                                <WiHumidity size={24} color='#000'className={classes.humidity}/>
+                                Humidity {props.humidity}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography>
+                                <WiStrongWind size={24} color='#000'className={classes.humidity}/>
+                                Wind Speed {props.wind_speed} km/h
+                            </Typography>
+                        </Grid>
                     </Grid>
                     <Grid item container xs={12} className={classes.description}>
                         <Grid item xs={12}>

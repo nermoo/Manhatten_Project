@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Searchbar from './searchbar';
+import { WiSunrise } from "weather-icons-react";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,8 @@ export default function MenuAppBar() {
             <AppBar className={classes.root}>
                 <Toolbar>
                     <Typography 
-                    className={classes.brand}>Nermo's weather App
+                    className={classes.brand}>Nermo's weather
+                    <WiSunrise size={24} color='#000' />
                     </Typography>
                     <FormControlLabel 
                     className={classes.switch}
