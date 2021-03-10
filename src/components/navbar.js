@@ -13,7 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Searchbar from './searchbar';
 import { WiSunrise } from "weather-icons-react";
-import { useState} from 'react';
+import { useState,useEffect} from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         boxColor:"black"
       },
       '&$checked + $track': {
-        backgroundColor: "black"[500],
+        backgroundColor: "black",
       },
       
   },
@@ -47,12 +47,21 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
     const classes=useStyles();
-    const [temp,setTemp]=useState(false)
+    const [temp,setTemp]=useState(false);
+    var tempsi="";
 
     const tempHandler=()=>{
       setTemp((prev)=>!(prev))
     }
 
+    useEffect(()=>{
+      if(temp==false){
+        tempsi="C";
+      }else{
+        tempsi="F";
+      }
+      console.log(tempsi);
+    },[temp])
     return(
         <div>
 

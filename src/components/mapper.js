@@ -114,7 +114,7 @@ const Mapper=(props)=>{
                     <Grid item container xs={12}>
                         <Grid className={classes.temp} item xs={10} sm={6}>
                             <Typography className={classes.tempe} variant="h1" component="h1">
-                                     {Math.round(props.temperature-273.15)} &deg;C
+                                     {Math.round(props.temperature-273.15)} &deg;C 
                             </Typography>
                         </Grid>
                         <Grid className={classes.icon} item xs={12} sm={6}>

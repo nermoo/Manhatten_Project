@@ -8,6 +8,7 @@ import { Grid,IconButton,Input } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 
+
 const useStyles=makeStyles({
 
   searchbar:{
@@ -54,6 +55,7 @@ const SearchBar=()=>{
       <div>
       <Grid container >
       <Grid item container xs={12}>
+        <Grid item xs={1} sm={2}/>
       <Grid className={classes.searchbar} item xs={12}>
         <Grid container direction="column">
           <Grid item container>
@@ -97,6 +99,7 @@ const SearchBar=()=>{
         
     
     </Grid>
+    <Grid item xs={1} sm={2}/>
     </Grid>
     </div>
     );
