@@ -11,7 +11,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Searchbar from './searchbar';
 import { WiSunrise } from "weather-icons-react";
 import { useState,useEffect} from 'react';
 
