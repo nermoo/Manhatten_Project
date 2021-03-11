@@ -12,6 +12,7 @@ import { TextField,
 import { makeStyles} from '@material-ui/core/styles';
 import Recommendations from './recommendations';
 import { WiHumidity,WiStrongWind } from "weather-icons-react";
+import Temp from './temperature';
 
 
 const useStyles=makeStyles({
@@ -58,13 +59,13 @@ const useStyles=makeStyles({
 
 const Mapper=(props)=>{
     const week=["Monday","Tuesday","Wendsday","Thursday","Friday","Saturday","Sunday"];
-    var TD="";
+    var TD="";      //determines if its AM or PM
     const today=new Date();
     const date=today.getDate();
     const hours=today.getHours();
     const minutes=today.getMinutes();
     const dey=week[today.getDay()-1];
-    const code=props.code;
+    const code=props.code; //code for the weather recommendations
     var recommendation='';
     if(6<hours && hours<18){
         
@@ -76,7 +77,6 @@ const Mapper=(props)=>{
         
     };
 
-    console.log(recommendation);
     var time="";
 
     if(minutes<10){
@@ -114,7 +114,7 @@ const Mapper=(props)=>{
                     <Grid item container xs={12}>
                         <Grid className={classes.temp} item xs={10} sm={6}>
                             <Typography className={classes.tempe} variant="h1" component="h1">
-                                     {Math.round(props.temperature-273.15)} &deg;C 
+                                     <Temp temp={props.temperature}/>
                             </Typography>
                         </Grid>
                         <Grid className={classes.icon} item xs={12} sm={6}>
@@ -133,7 +133,7 @@ const Mapper=(props)=>{
                         <Grid item xs={12}>
                             <Typography>
                                 <WiHumidity size={24} color='#000'className={classes.humidity}/>
-                                Humidity {props.humidity}
+                                Humidity {props.humidity}%
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>

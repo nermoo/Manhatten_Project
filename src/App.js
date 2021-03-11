@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import { Grid } from '@material-ui/core';
-import './App.css';
 import Content from './components/content';
 import Searchbar from './components/searchbar';
 import Navbar from './components/navbar';

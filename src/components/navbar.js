@@ -3,16 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import { WiSunrise } from "weather-icons-react";
-import { useState,useEffect} from 'react';
+import { useDispatch } from 'react-redux';
+import { tempSw} from '../actions';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
         boxColor:"black"
       },
       '&$checked + $track': {
-        backgroundColor: "black",
+        backgroundColor: "black", //this need to be improved.
       },
       
   },
@@ -45,22 +41,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MenuAppBar() {
+
+    const dispatch= useDispatch();
     const classes=useStyles();
-    const [temp,setTemp]=useState(false);
-    var tempsi="";
 
-    const tempHandler=()=>{
-      setTemp((prev)=>!(prev))
-    }
+  //-------these are commented out because the job is done by the redux.-----
 
-    useEffect(()=>{
-      if(temp==false){
-        tempsi="C";
-      }else{
-        tempsi="F";
-      }
-      console.log(tempsi);
-    },[temp])
+    // const [temp,setTemp]=useState(false);
+    // var tempsi="";
+    // const tempHandler=()=>{
+    //   setTemp((prev)=>!(prev))
+    // }
+
+    // useEffect(()=>{
+    //   if(temp===false){
+    //     tempsi="C";
+    //   }else{
+    //     tempsi="F";
+    //   }
+    //   console.log(tempsi);
+    // },[temp])
+
+
+
     return(
         <div>
 
@@ -72,7 +75,7 @@ export default function MenuAppBar() {
                     </Typography>
                     <FormControlLabel 
                     className={classes.switch}
-                    control={<Switch checked={temp} onChange={tempHandler} />}
+                    control={<Switch onChange={()=>dispatch(tempSw())} />} //dispatch an request for the redux store to change the value of the tempsw
                     label="&deg;C/&deg;F"
                     />
                 </Toolbar>
