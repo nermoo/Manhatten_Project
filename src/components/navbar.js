@@ -23,21 +23,26 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  Switch:{
-      float:"right",
-      '$$checked':{
-        color:"black",
-        boxColor:"black"
-      },
-      '&$checked + $track': {
-        backgroundColor: "black", //this need to be improved.
+  switch:{
+    marginLeft:0,
+    marginRight:0
       },
       
-  },
   brand:{
       flexGrow:1,
       fontSize:23
-  }
+  },
+  switchBase: {
+    color: 'white',
+    "&$checked": {
+      color: 'white'
+    },
+    "&$checked + $track": {
+      backgroundColor: 'black'
+    }
+  },
+  checked: {},
+  track: {}
 }));
 
 export default function MenuAppBar() {
@@ -73,11 +78,20 @@ export default function MenuAppBar() {
                     className={classes.brand}>weather SL
                     <WiSunrise size={24} color='#000' />
                     </Typography>
+                    <Typography>&deg;C</Typography>
                     <FormControlLabel 
                     className={classes.switch}
-                    control={<Switch onChange={()=>dispatch(tempSw())} />} //dispatch an request for the redux store to change the value of the tempsw
-                    label="&deg;C/&deg;F"
+                    control={<Switch 
+                                    classes={{
+                                      switchBase: classes.switchBase,
+                                      thumb: classes.thumb,
+                                      track: classes.track,
+                                      checked: classes.checked
+                                    }}
+                                    onChange={()=>dispatch(tempSw())} />} //dispatch an request to the redux store to change the value of the tempsw
+                    // label="&deg;C/&deg;F"
                     />
+                    <Typography>&deg;F</Typography>
                 </Toolbar>
                 
             </AppBar>

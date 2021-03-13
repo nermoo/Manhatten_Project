@@ -3,11 +3,10 @@ import { useSelector } from 'react-redux';
 
 
 const Temperature=(props)=>{
-    //araken ganna update krana state eka methnat aran eka methnadi condition ekkin check krla output eke decide krnda 
     const temp=props.temp;
-    const buttonState= useSelector(state=>state.tempSwitch);
+    const buttonState= useSelector(state=>state.tempSwitch); //get the currnet state of the switch;
     var unit="";
-    if(buttonState==false){
+    if(buttonState===false){
         unit="C";
         return (
             <div>
