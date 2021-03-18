@@ -1,5 +1,5 @@
 This is an simple weather application that shows weather from [OpenWeatherMap](https://openweathermap.org/) api.
-### [Click here for a Demo](https://nermoo.github.io/Manhatten_Project/).(You will)
+### [Click here for a Demo](https://nermoo.github.io/Manhatten_Project/).
 
 ![User interface](https://github.com/nermoo/Manhatten_Project/blob/master/src/images/Screenshot%20(64).png?raw=true)
 

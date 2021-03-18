@@ -47,7 +47,7 @@ const SearchBar=()=>{
 
 
   useEffect(()=>{
-    setapi(`http://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
+    setapi(`https://api.openweathermap.org/data/2.5/forecast?q=${city},LK&mode=json&appid=5c4420d5c8a61c16e5ee37e4ca265763`)
   },[city])
 
 
