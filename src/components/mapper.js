@@ -64,7 +64,14 @@ const Mapper=(props)=>{
     const date=today.getDate();
     const hours=today.getHours();
     const minutes=today.getMinutes();
-    const dey=week[today.getDay()-1];
+    var dey="";
+
+    if(today.getDay()==0){
+        dey=week[today.getDay()];
+    }else{
+        dey=week[today.getDay()-1];
+    }
+     
     const code=props.code; //code for the weather recommendations
     var recommendation='';
     if(6<hours && hours<18){
