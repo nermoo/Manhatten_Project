@@ -1,5 +1,6 @@
 This is an simple weather application that shows weather from [OpenWeatherMap](https://openweathermap.org/) api.
 ### [Click here for a Demo](https://nermoo.github.io/Manhatten_Project/).
+Note - you will have to "Disable protection for now" on you web browser. Otherwise it will not make any api calls.
 
 ![User interface](https://github.com/nermoo/Manhatten_Project/blob/master/src/images/Screenshot%20(64).png?raw=true)
 
